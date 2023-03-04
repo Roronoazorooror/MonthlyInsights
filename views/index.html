@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cron Jobs</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
+  </head>
+  <body>
+    <form id="email-form" action="/allmails" method="post">
+        <label for="email">ADD MAILS TO SEND THE REPORT</label>
+        <input type="email" id="allmails" name="email" required>
+        <button type="submit">Submit</button>
+      </form>
+  
+      <div id="allmailsmessage" style="display:none;">
+      </div>
+    <button id="cronjob">Subscribe for the monthly report</button>
+
+    <script> 
+      const emailForm = document.querySelector('#email-form');
+const message = document.querySelector('#allmailsmessage');
+
+emailForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const email = document.getElementById('allmails').value;
+  fetch('/allmails', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(response => response.json())
+    .then(data => {
+      message.textContent = data.message;
+      message.style.display = 'block';
+    })
+    .catch(error => {
+      console.error(error);
+      message.textContent = 'Subscription failed';
+      message.style.color = 'red';
+      message.style.display = 'block';
+    });
+});
+
+const cronjob = document.getElementById('cronjob')
+cronjob.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  fetch('/cronjob', { method: 'GET' })
+    .then(response => {
+      if (response.ok) {
+        message.textContent = 'Subscribed successfully';
+        message.style.color = 'green';
+        message.style.display = 'block';
+        console.log('Cron job completed successfully');
+      } else {
+        message.textContent = 'Subscription failed';
+        message.style.color = 'red';
+        message.style.display = 'block';
+        console.log('Cron job failed');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      message.textContent = 'Subscription failed';
+      message.style.color = 'red';
+      message.style.display = 'block';
+    });
+});
+
+      </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+ {
+    "uniqueVisitors": 1000,
+    "pageViews": 5000,
+    "averageTimeOnSite": "00:02:30",
+    "bounceRate": "30%",
+    "conversionRate": "5%",
+    "trafficSources": {
+      "searchEngines": "50%",
+      "socialMedia": "20%",
+      "directTraffic": "30%"
+    },
+    "mostPopularPages": [
+      { "url": "/home", "pageViews": 2000 },
+      { "url": "/products", "pageViews": 1000 },
+      { "url": "/about-us", "pageViews": 500 }
+    ],
+    "devices": {
+      "desktop": "60%",
+      "mobile": "30%",
+      "tablet": "10%"
+    },
+    "browsers": {
+      "Chrome": "40%",
+      "Safari": "30%",
+      "Firefox": "20%",
+      "Internet Explorer": "5%",
+      "Others": "5%"
+    },
+    "location": {
+        "India": "60%",
+      "United States": "20%",
+      "United Kingdom": "10%",
+      "Others": "10%"
+    }, 
+    "revenue": 5000
+  }
+  
